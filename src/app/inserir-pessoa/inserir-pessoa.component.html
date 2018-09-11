@@ -1,0 +1,56 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+    <h1>Cadastro de Pessoas</h1>
+  </div>
+</div>
+<form autocomplete="off" #f="ngForm" (ngSubmit)="adicionar(f)">
+  <div class="ui-g">
+    <div class="ui-g-6 ui-fluid">
+      <label>Nome</label>
+      <input pInputText type="text" id="nome" name="nome" [(ngModel)]="pessoa.nome">
+    </div>
+    <div class="ui-g-3 ui-fluid">
+      <Label>Estado</Label>
+      <input pInputText type="text" id="estado" name="estado" [(ngModel)]="pessoa.estado.nome">
+    </div>
+    <div class="ui-g-3 ui-fluid">
+      <label>UF</label>
+      <input pInputText type="text" id="uf" name="uf" [(ngModel)]="pessoa.estado.uf">
+    </div>
+    <div class="ui-g-1 ui-fluid">
+      <br>
+      <button pButton type="button" icon="pi pi-plus" (click)="incluirDocumentos()"></button>
+    </div>
+
+    <div class="ui-g-5 ui-fluid">
+      <label>Tipo do Documento</label>
+      <input pInputText type="text" id="tipo" name="tipo" [(ngModel)]="documento.tipo">
+    </div>
+
+    <div class="ui-g-5 ui-fluid">
+      <label>Número do Documento</label>
+      <input pInputText type="number" id="numero" name="numero" [(ngModel)]="documento.numero">
+    </div>
+
+    <div class="ui-g-12 ui-fluid">
+      <p-table [value]="pessoa.documentos" responsive="true">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Tipo</th>
+            <th>Número</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-documento>
+          <tr>
+            <td> {{documento.tipo}} </td>
+            <td> {{documento.numero }} </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="ui-g-4">
+      <br>
+      <button pButton type="submit" icon="pi pi-check" label="Confirmar"></button>
+    </div>
+  </div>
+</form>
